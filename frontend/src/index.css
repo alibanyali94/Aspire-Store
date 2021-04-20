@@ -191,3 +191,11 @@ img.small{
 .min-30{
   min-width:  30rem;
 }
+
+
+.input {
+     margin-left: 400px;
+   
+     justify-content: center;
+      background-color: rgb(250, 243, 243);
+}

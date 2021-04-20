@@ -67,7 +67,7 @@ const data = {
         },
         {
             _id: '6',
-            name: 'Men Formal Dress 6',
+            name: 'Men Formal Dress 11',
             category: 'Clothes',
             image: '/images/1.jpg',
             price: 300,
