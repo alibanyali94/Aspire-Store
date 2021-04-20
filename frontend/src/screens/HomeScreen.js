@@ -5,11 +5,10 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions';
-import SearchComponent from '../components/SearchComponent';
+
 
 export default function HomeScreen() {
-  const s = useSelector((state) => state.productList)
-  const { search } = s;
+
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products } = productList;
