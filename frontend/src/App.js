@@ -6,7 +6,10 @@ import { signout } from './actions/userActions';
 import SearchComponent from './components/SearchComponent';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import ProductScreen from './screens/ProductScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import ShippingAdressScreen from './screens/ShippingAdressScreen';
 import SigninScreen from './screens/SigninScreen';
 
 
@@ -29,6 +32,7 @@ function App() {
         <header className="row">
           <div>
             <Link className="brand" to="/">
+
               Aspire </Link>
             <SearchComponent />
 
@@ -67,10 +71,13 @@ function App() {
           <Route path="/signin" component={SigninScreen}></Route>
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/" component={HomeScreen} exact></Route>
-
+          <Route path="/register" component={RegisterScreen}></Route>
+          <Route path="/shipping" component={ShippingAdressScreen}></Route>
+          <Route path="/payment" component={PaymentMethodScreen}></Route>
         </main>
 
-        <footer className="row center">2021 All Right reserved</footer>
+        <footer className="row center"><img alt="Aspire" className="small-img" src='/images/4.jpg'></img>&nbsp;&nbsp;&nbsp;&nbsp;
+        2021 All Right reserved</footer>
       </div>
     </BrowserRouter>
   );

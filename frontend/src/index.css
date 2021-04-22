@@ -58,7 +58,7 @@ button.block {
 }
 .form label{
   margin:1rem 0;
-  display: block;
+  
 }
 
 html{
@@ -195,7 +195,7 @@ img.small{
 
 .input {
      margin-left: 400px;
-   
+     margin-top: auto;
      justify-content: center;
       background-color: rgb(250, 243, 243);
 }
@@ -219,4 +219,26 @@ img.small{
 .dropdown:hover .dropdown-content{
   display: block;
 
+}
+.small-img{
+  max-width: 4.1rem;
+  width: 100%;
+}
+
+.loading{
+  display: block !important;
+}
+.checkout-steps>div{
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.checkout-steps > div.active {
+  border-top-color:rgb(243, 148, 7);
+  color: rgb(243, 148, 7);
+  
+  
 }
