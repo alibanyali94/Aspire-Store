@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import productRouter from './ProductAPI/productRouter.js';
 import userRouter from './UserAPI/userRouter.js';
 import dotenv from 'dotenv'
+import orderRouter from './OrderAPI/orderRouter.js';
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -25,6 +26,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/aspire', {
 // });
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
+app.use('/api/orders', orderRouter)
 app.get('/', (req, res) => {
     res.send('server is ready');
 });
