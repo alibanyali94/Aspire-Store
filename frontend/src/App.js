@@ -6,6 +6,8 @@ import { signout } from './actions/userActions';
 import SearchComponent from './components/SearchComponent';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
+import OrderHistoryScreen from './screens/OrderHistoryScreen';
+import OrderScreen from './screens/OrderScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import ProductScreen from './screens/ProductScreen';
@@ -36,11 +38,6 @@ function App() {
 
               Aspire </Link>
             <SearchComponent />
-
-
-
-
-
           </div>
           <div>
             <Link to="/cart">Carts
@@ -54,10 +51,14 @@ function App() {
                   <Link to="#">{userInfo.name}
                     <i className="fa fa-caret-down"></i></Link>
                   <ul className="dropdown-content">
-                    <Link to="#signout" onClick={signoutHandler}>
+                    <li>
+                      <Link to="/orderhistory">Order History</Link>
+                    </li>
+                    <li><Link to="#signout" onClick={signoutHandler}>
 
                       Sign Out
-                   </Link>
+                   </Link></li>
+
                   </ul>
                 </div>
 
@@ -76,6 +77,8 @@ function App() {
           <Route path="/shipping" component={ShippingAdressScreen}></Route>
           <Route path="/payment" component={PaymentMethodScreen}></Route>
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
+          <Route path="/order/:id" component={OrderScreen}></Route>
+          <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
         </main>
 
         <footer className="row center"><img alt="Aspire" className="small-img" src='/images/4.jpg'></img>&nbsp;&nbsp;&nbsp;&nbsp;
