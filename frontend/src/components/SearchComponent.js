@@ -6,15 +6,15 @@ import { listProducts, searchProduct } from '../actions/productActions'
 
 export default function SearchComponent() {
     const dispatch = useDispatch();
-    const s = useSelector(state => state.productList.products)
+    const productList = useSelector(state => state.productList.products)
 
     const submitHandler = (event) => {
 
+        const search = productList.filter(data => data.name.toLowerCase().includes(event.target.value.toLowerCase()));
 
-        const newArr = s.filter(data => data.name.toLowerCase().includes(event.target.value.toLowerCase()));
         if (event.target.value !== '')
 
-            dispatch(searchProduct(newArr))
+            dispatch(searchProduct(search))
 
         else
             dispatch(listProducts())
