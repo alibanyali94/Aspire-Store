@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts, searchProduct } from '../actions/productActions'
 
@@ -7,6 +7,8 @@ import { listProducts, searchProduct } from '../actions/productActions'
 export default function SearchComponent() {
     const dispatch = useDispatch();
     const productList = useSelector(state => state.productList.products)
+
+
 
     const submitHandler = (event) => {
 
@@ -17,7 +19,7 @@ export default function SearchComponent() {
             dispatch(searchProduct(search))
 
         else
-            dispatch(listProducts())
+            dispatch(listProducts(search))
 
 
 

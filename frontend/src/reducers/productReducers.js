@@ -5,13 +5,15 @@ const {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
-  SEARCH_PRODUCT,
+
+
 } = require('../constants/productConstants');
 
 export const productListReducer = (
   state = {
     loading: true,
-    products: []
+    products: [],
+
   }
   , action
 ) => {
@@ -19,15 +21,16 @@ export const productListReducer = (
     case PRODUCT_LIST_REQUEST:
       return { loading: true };
     case PRODUCT_LIST_SUCCESS:
-      return { loading: false, products: action.payload };
+      return {
+        loading: false,
+        products: action.payload.products,
+        pages: action.payload.pages,
+        page: action.payload.page,
+      };
     case PRODUCT_LIST_FAIL:
       return { loading: false, error: action.payload };
-    case SEARCH_PRODUCT:
-      return {
 
-        products: action.payload,
-        loading: false
-      }
+
     default:
       return state;
   }
@@ -44,3 +47,4 @@ export const productDetailsReducer = (state = { product: {}, loading: true }, ac
     default: return state
   }
 }
+

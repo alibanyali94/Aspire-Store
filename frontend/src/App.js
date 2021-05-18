@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import { signout } from './actions/userActions';
-import SearchComponent from './components/SearchComponent';
+import SearchBox from './components/SearchBox';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
@@ -12,6 +12,7 @@ import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import ProductScreen from './screens/ProductScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import SearchScreen from './screens/SearchScreen';
 import ShippingAdressScreen from './screens/ShippingAdressScreen';
 import SigninScreen from './screens/SigninScreen';
 
@@ -37,7 +38,14 @@ function App() {
             <Link className="brand" to="/">
 
               Aspire </Link>
-            <SearchComponent />
+
+          </div>
+          <div>
+            <Route
+              render={({ history }) => (
+                <SearchBox history={history}></SearchBox>
+              )}
+            ></Route>
           </div>
           <div>
             <Link to="/cart">Carts
@@ -79,6 +87,22 @@ function App() {
           <Route path="/placeorder" component={PlaceOrderScreen}></Route>
           <Route path="/order/:id" component={OrderScreen}></Route>
           <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+
+          <Route
+            path="/search/name/:name?"
+            component={SearchScreen}
+            exact
+          ></Route>
+          <Route
+            path="/search/name/:name/pageNumber/:pageNumber"
+            component={SearchScreen}
+            exact
+          ></Route>
+          <Route
+            path="/productlist/pageNumber/:pageNumber"
+            component={HomeScreen}
+            exact
+          ></Route>
         </main>
 
         <footer className="row center"><img alt="Aspire" className="small-img" src='/images/4.jpg'></img>&nbsp;&nbsp;&nbsp;&nbsp;

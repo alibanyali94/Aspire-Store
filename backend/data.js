@@ -83,7 +83,7 @@ const data = {
         },
         {
 
-            name: 'Men Formal Dress 11',
+            name: 'Men Formal Dress 10',
             category: 'Clothes',
             image: '/images/1.jpg',
             price: 300,
@@ -91,6 +91,58 @@ const data = {
             brand: 'Nike',
             rating: 4.5,
             numReviews: 30,
+            description: 'high quality product',
+
+        },
+        {
+
+            name: 'Digital Watch',
+            category: 'Clothes',
+            image: '/images/watch.jpg',
+            price: 250,
+            countInStock: 3,
+            brand: 'adidas',
+            rating: 4,
+            numReviews: 20,
+            description: 'high quality product',
+
+        },
+        {
+
+            name: 'Jaket',
+            category: 'Clothes',
+            image: '/images/jaket.jpg',
+            price: 250,
+            countInStock: 3,
+            brand: 'adidas',
+            rating: 4,
+            numReviews: 20,
+            description: 'high quality product',
+
+        },
+        {
+
+            name: 'Women Dress',
+            category: 'Clothes',
+            image: '/images/Wdress.jpg',
+            price: 250,
+            countInStock: 3,
+            brand: 'adidas',
+            rating: 4,
+            numReviews: 20,
+            description: 'high quality product',
+
+        },
+        {
+
+            name: 'T-shirt',
+            category: 'Clothes',
+            image: '/images/shirt.jpg',
+            price: 250,
+            countInStock: 3,
+            brand: 'adidas',
+            rating: 4,
+            numReviews: 20,
             description: 'high quality product',
 
         },
