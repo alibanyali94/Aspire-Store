@@ -35,9 +35,9 @@ function App() {
       <div className="grid-container">
         <header className="row">
           <div>
-            <Link className="brand" to="/">
+            <a className="brand" href="/">
 
-              Aspire </Link>
+              Aspire </a>
 
           </div>
           <div>
@@ -94,7 +94,7 @@ function App() {
             exact
           ></Route>
           <Route
-            path="/search/name/:name/pageNumber/:pageNumber"
+            path="/search/:name/pageNumber/:pageNumber"
             component={SearchScreen}
             exact
           ></Route>

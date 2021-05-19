@@ -1,6 +1,13 @@
 import Axios from "axios";
 
-import { PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, SEARCH_PRODUCT, } from "../constants/productConstants"
+import {
+    PRODUCT_DETAILS_FAIL,
+    PRODUCT_DETAILS_REQUEST,
+    PRODUCT_DETAILS_SUCCESS,
+    PRODUCT_LIST_FAIL,
+    PRODUCT_LIST_REQUEST,
+    PRODUCT_LIST_SUCCESS,
+} from "../constants/productConstants"
 
 //HomeScreen
 
@@ -17,13 +24,8 @@ export const listProducts = ({ pageNumber = '', name = '', }) => async (
     } catch (error) { dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message }) }
 }
 
-//Search
-export const searchProduct = (name) => async (dispatch) => {
 
-    dispatch({ type: SEARCH_PRODUCT, payload: name })
-}
 
-//productList
 
 export const detailsProduct = (productId) => async (dispatch) => {
     dispatch({ type: PRODUCT_DETAILS_REQUEST, payload: productId });

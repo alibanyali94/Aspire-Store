@@ -1,5 +1,7 @@
 import Order from "../models/orderModel.js";
 
+
+// orders mine list
 export const getOrdersController = async (req, res) => {
     const orders = await Order.find({ user: req.user._id });
     res.send(orders);

@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/aspire', {
 
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
-app.use('/api/orders', orderRouter)
+app.use('/api/orders', orderRouter);
 
 
 

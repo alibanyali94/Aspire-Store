@@ -3,20 +3,21 @@ import data from '../data.js';
 
 export const getProductsController = async (req, res) => {
     const pageSize = 4;
-    const page = parseInt(req.query.pageNumber) || 1;
+    const page = req.query.pageNumber || 1;
     const name = req.query.name || '';
     const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
 
-
-    const count = await Product.count({
+    // counts the number of documents that match name fillter
+    const count = await Product.countDocuments({
         ...nameFilter
     })
 
-
+    //get products that match fillter of search name and pagination
     const products = await Product.find({
         ...nameFilter,
     }).skip(pageSize * (page - 1))
         .limit(pageSize);
+
     res.send({ products, page, pages: Math.ceil(count / pageSize) });
 
 }

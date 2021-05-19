@@ -6,7 +6,7 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import Product from '../components/product';
 
-export default function SearchScreen(props) {
+export default function SearchScreen() {
     const { name = 'all', pageNumber = 1 } = useParams();
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
@@ -17,7 +17,7 @@ export default function SearchScreen(props) {
     const getFilterUrl = (filter) => {
         const filterPage = filter.page || pageNumber;
         const filterName = filter.name || name;
-        return `/search/name/${filterName}/pageNumber/${filterPage}`;
+        return `/search/${filterName}/pageNumber/${filterPage}`;
     }
     return (
         <div className="row center">
@@ -32,14 +32,22 @@ export default function SearchScreen(props) {
                         <MessageBox variant="danger">{error}</MessageBox>
                     ) : (
                         <>
+                            <h1 className="row top">Search Results For :{name} </h1>
                             {products.length === 0 && (
-                                <MessageBox>No Product Found</MessageBox>
+                                <div>
+
+                                    <MessageBox>No Product Found</MessageBox></div>
+
                             )}
+
+
                             <div className="row center">
+
                                 {products.map((product) => (
                                     <Product key={product._id} product={product}></Product>
                                 ))}
                             </div>
+
                             <div className="row center pagination">
                                 {[...Array(pages).keys()].map((x) => (
                                     <Link
