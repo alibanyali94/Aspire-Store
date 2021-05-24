@@ -1,4 +1,29 @@
 import jwt from 'jsonwebtoken';
+import Order from '../models/orderModel.js';
+export const getOrders = (user) => {
+    return Order.find({ user })
+}
+
+export const saveNewOrder = (orderItems, shippingAddress, paymentMethod, itemsPrice, shippingPrice, taxPrice, totalPrice, userId) => {
+    const newOrder = new Order({
+        orderItems: orderItems,
+        shippingAddress: shippingAddress,
+        paymentMethod: paymentMethod,
+        itemsPrice: itemsPrice,
+        shippingPrice: shippingPrice,
+        taxPrice: taxPrice,
+        totalPrice: totalPrice,
+        user: userId,
+    })
+    return newOrder.save();
+}
+
+export const getOrder = (orderId) => {
+    return Order.findById(orderId);
+}
+
+
+
 
 export const isAuth = (req, res, next) => {
     const authorization = req.headers.authorization;

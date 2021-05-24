@@ -9,11 +9,12 @@ import { Link, useParams } from 'react-router-dom';
 
 
 
+
 export default function HomeScreen() {
-  const { name = '', pageNumber = 1 } = useParams();
+  const { pageNumber = 1 } = useParams();
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
-  const { loading, error, products, page, pages } = productList;
+  const { loading, error, products, pages, page } = productList;
 
 
 
@@ -21,7 +22,7 @@ export default function HomeScreen() {
 
   useEffect(() => {
     dispatch(listProducts({ pageNumber, name: '' }));
-  }, [dispatch, name, pageNumber,]);
+  }, [dispatch, pageNumber,]);
   return (
     <div>
       {loading ? (
@@ -41,9 +42,6 @@ export default function HomeScreen() {
                 <Product key={product._id} product={product}></Product>
 
               ))}
-
-
-
             </div>
             <div className="row center pagination">
               {[...Array(pages).keys()].map((x) => (
@@ -55,10 +53,13 @@ export default function HomeScreen() {
                   {x + 1}
                 </Link>
               ))}
+
+
             </div>
+
+
           </>
         )}
-
     </div>
 
   );

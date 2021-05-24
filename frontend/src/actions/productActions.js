@@ -11,7 +11,7 @@ import {
 
 //HomeScreen
 
-export const listProducts = ({ pageNumber = '', name = '', }) => async (
+export const listProducts = ({ pageNumber = 1, name = '', }) => async (
     dispatch
 ) => {
     dispatch({

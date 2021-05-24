@@ -1,5 +1,5 @@
 import express from 'express';
-import { isAuth } from '../services/orderServices.js';
+import { isAuth } from '../../services/orderServices.js';
 import { getOrderController, getOrdersController, newOrderController } from './orderController.js';
 
 const orderRouter = express.Router();
