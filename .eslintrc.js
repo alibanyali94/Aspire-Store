@@ -4,10 +4,7 @@ module.exports = {
         "es2021": true,
         "node": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
+   "extends": ["react-app", "prettier"],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -16,8 +13,19 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react","prettier"
     ],
-    "rules": {
-    }
+    "rules":  {
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 80,
+        "trailingComma": "es5",
+        "semi": true,
+        "jsxSingleQuote": true,
+        "singleQuote": true,
+        "useTabs": true
+      }
+    ]
+  }
 };
