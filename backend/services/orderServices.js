@@ -6,16 +6,26 @@ const getOrders = (user) => {
 };
 
 const saveNewOrder = (createdOrder, userId) => {
-  const newOrder = new Order(
-    createdOrder.orderItems,
-    createdOrder.shippingAddress,
-    createdOrder.paymentMethod,
-    createdOrder.itemsPrice,
-    createdOrder.shippingPrice,
-    createdOrder.taxPrice,
-    createdOrder.totalPrice,
-    { user: userId }
-  );
+  const {
+    orderItems,
+    shippingAddress,
+    paymentMethod,
+    itemsPrice,
+    shippingPrice,
+    taxPrice,
+    totalPrice,
+  } = createdOrder;
+
+  const newOrder = new Order({
+    orderItems,
+    shippingAddress,
+    paymentMethod,
+    itemsPrice,
+    shippingPrice,
+    taxPrice,
+    totalPrice,
+    user: userId,
+  });
   return newOrder.save();
 };
 

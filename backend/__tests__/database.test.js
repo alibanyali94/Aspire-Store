@@ -25,9 +25,9 @@ describe('POST ', () => {
   });
   it.skip('OK, creating a new user works', async () => {
     const user = {
-      name: 'aldfutruss',
-      email: 'bafffsers@bk.reu',
-      password: '1dfw1g1',
+      name: 'aldfyeweuss',
+      email: 'bareef@bk.ru',
+      password: '1tertrfeww1',
     };
     await serverRequest.post('/api/users', saveNewUser(user)).send(user);
 

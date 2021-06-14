@@ -32,11 +32,11 @@ app.get('/', (req, res) => {
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
-// const port = process.env.PORT || 5000;
-// app.listen(port, (err) => {
-//   if (err) console.error('Unable to connect the server', err);
-//   console.log(`serve at http://localhost:${port}`);
-// });
+const port = process.env.PORT || 5000;
+app.listen(port, (err) => {
+  if (err) console.error('Unable to connect the server', err);
+  console.log(`serve at http://localhost:${port}`);
+});
 module.exports = app;
 
 //app.get('/api/products/:id', (req, res) => {

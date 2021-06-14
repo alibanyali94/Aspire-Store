@@ -33,7 +33,7 @@ exports.newOrderController = async (req, res) => {
       totalPrice,
     };
     const createdOrder = await saveNewOrder(oorder, req.user._id);
-    res.status(201).send({ message: 'New Order Created', order: createdOrder });
+    res.send({ message: 'New Order Created', order: createdOrder });
   }
 };
 

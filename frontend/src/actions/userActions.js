@@ -42,10 +42,11 @@ export const register = (name, email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
+
       payload:
-        error.response && error.response.data.message
+        isCelebrateError(error) && error.response.data.message
           ? error.response.data.message
-          : error.message,
+          : error.response.data.validation.body.message,
     });
   }
 };
