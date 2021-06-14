@@ -1,17 +1,19 @@
-import express from 'express';
-import { isAuth } from '../../services/orderServices.js';
-import { getOrderController, getOrdersController, newOrderController } from './orderController.js';
+const express = require('express');
+const { isAuth } = require('../../services/orderServices.js');
+const {
+  getOrderController,
+  getOrdersController,
+  newOrderController,
+} = require('./orderController.js');
 
 const orderRouter = express.Router();
 
-
-//get orders list 
+//get orders list
 orderRouter.get('/mine', isAuth, getOrdersController);
 
 orderRouter.post('/', isAuth, newOrderController);
 
-// get order details by id 
-orderRouter.get('/:id', isAuth, getOrderController)
+// get order details by id
+orderRouter.get('/:id', isAuth, getOrderController);
 
-
-export default orderRouter;
+module.exports = orderRouter;

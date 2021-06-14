@@ -7,61 +7,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions';
 import { Link, useParams } from 'react-router-dom';
 
-
-
-
 export default function HomeScreen() {
   const { pageNumber = 1 } = useParams();
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, pages, page } = productList;
 
-
-
-
-
   useEffect(() => {
     dispatch(listProducts({ pageNumber, name: '' }));
-  }, [dispatch, pageNumber,]);
+  }, [dispatch, pageNumber]);
   return (
     <div>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
-        <MessageBox variant="danger">{error}</MessageBox>
-
-
-
-      ) :
-
-        (
-          <>
-            <div className="row center">
-
-              {products.map((product) => (
-                <Product key={product._id} product={product}></Product>
-
-              ))}
-            </div>
-            <div className="row center pagination">
-              {[...Array(pages).keys()].map((x) => (
-                <Link
-                  className={x + 1 === page ? 'active' : ''}
-                  key={x + 1}
-                  to={`/productlist/pageNumber/${x + 1}`}
-                >
-                  {x + 1}
-                </Link>
-              ))}
-
-
-            </div>
-
-
-          </>
-        )}
+        <MessageBox variant='danger'>{error}</MessageBox>
+      ) : (
+        <>
+          <div className='row center'>
+            {products.map((product) => (
+              <Product key={product._id} product={product}></Product>
+            ))}
+          </div>
+          <div className='row center pagination'>
+            {[...Array(pages).keys()].map((x) => (
+              <Link
+                className={x + 1 === page ? 'active' : ''}
+                key={x + 1}
+                to={`/productlist/pageNumber/${x + 1}`}
+              >
+                {x + 1}
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </div>
-
   );
-
 }

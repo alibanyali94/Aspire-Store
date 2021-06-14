@@ -1,34 +1,36 @@
-import jwt from 'jsonwebtoken'
-import data from '../data.js';
-import User from '../models/userModel.js';
+const jwt = require('jsonwebtoken');
+const data = require('../data');
+const User = require('../models/userModel.js');
 
-export const getUser = (userEmail) => {
-    return User.findOne({ email: userEmail });
+exports.getUser = (userEmail) => {
+  return User.findOne({ email: userEmail });
+};
 
-}
-export const insertUsers = () => {
-    return User.insertMany(data.users);
-}
+exports.insertUsers = () => {
+  User.remove();
+  return User.insertMany(data.users);
+};
 
-export const saveNewUser = (userName, email, password) => {
-    const newUser = new User({
-        name: userName,
-        email: email,
-        password: password
-    })
-    return newUser.save();
-}
+exports.saveNewUser = (user) => {
+  const newUser = new User({
+    name: user.name,
+    email: user.email,
+    password: user.password,
+  });
+  return newUser.save();
+};
 
-
-
-
-export const generateToken = (user) => {
-    return jwt.sign({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        isAdmin: user.isAdmin
-    }, process.env.JWT_SECRET || 'somethingsecret', {
-        expiresIn: '30d',
-    })
-}
+exports.generateToken = (user) => {
+  return jwt.sign(
+    {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    },
+    process.env.JWT_SECRET || 'somethingsecret',
+    {
+      expiresIn: '30d',
+    }
+  );
+};

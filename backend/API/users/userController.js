@@ -1,47 +1,36 @@
-import { generateToken, insertUsers, getUser, saveNewUser } from '../../services/userServices.js';
-import bcrypt from 'bcrypt'
-
-
+const userServices = require('../../services/userServices.js');
+const bcrypt = require('bcrypt');
 
 //saveUsers
-export const saveUsersController = async (req, res) => {
-    const createdUsers = await insertUsers();
-    res.send({ createdUsers });
-}
-
+exports.saveUsersController = async (req, res) => {
+  const createdUsers = await userServices.insertUsers();
+  res.send({ createdUsers });
+};
 
 //login
-export const loginController = async (req, res) => {
-    const user = await getUser(req.body.email);
+exports.loginController = async (req, res) => {
+  const user = await userServices.getUser(req.body.email);
 
-    if (user) {
-
-        if (bcrypt.compareSync(req.body.password, user.password)) {
-            res.send({
-                _id: user._id,
-                name: user.name,
-                email: user.email,
-                isAdmin: user.isAdmin,
-                token: generateToken(user),
-            });
-            return;
-        }
+  if (user) {
+    if (bcrypt.compareSync(req.body.password, user.password)) {
+      res.send({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        token: userServices.generateToken(user),
+      });
+      return;
     }
-    res.status(401).send({ message: 'Invalied User Email or Password' })
-}
+  }
+  res.status(401).send({ message: 'Invalied User Email or Password' });
+};
 //register
-export const registerController = async (req, res) => {
+exports.registerController = async (req, res) => {
+  const { name, email, password } = req.body;
 
-    const createdUsers = await saveNewUser(
-        req.body.name,
-        req.body.email,
-        bcrypt.hashSync(req.body.password, 8)
-    );
-    res.send({
-        _id: createdUsers._id,
-        name: createdUsers.name,
-        email: createdUsers.email,
-        isAdmin: createdUsers.isAdmin,
-        token: generateToken(createdUsers),
-    })
-}
+  const user = { name, email, password: bcrypt.hashSync(password, 8) };
+  const createdUsers = await userServices.saveNewUser(user);
+
+  res.send({ user: createdUsers });
+};
