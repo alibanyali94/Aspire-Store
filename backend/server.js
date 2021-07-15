@@ -23,15 +23,15 @@ app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
 
-app.get('/api/config/paypal', (res, req) => {
-  res.send(process.env.PAYPAL_CLIENT_ID || 'sandbox');
-});
-app.get('/', (req, res) => {
-  res.status(200).send('server is ready');
-});
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
-});
+// app.get('/api/config/paypal', (res, req) => {
+//   res.send(process.env.PAYPAL_CLIENT_ID || 'sandbox');
+// });
+// app.get('/', (req, res) => {
+//   res.status(200).send('server is ready');
+// });
+// app.use((err, req, res, next) => {
+//   res.status(500).send({ message: err.message });
+// });
 const port = process.env.PORT || 5000;
 app.listen(port, (err) => {
   if (err) console.error('Unable to connect the server', err);

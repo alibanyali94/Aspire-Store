@@ -23,11 +23,11 @@ describe('POST ', () => {
       .then(() => done())
       .catch((err) => done(err));
   });
-  it.skip('OK, creating a new user works', async () => {
+  it('OK, creating a new user works', async () => {
     const user = {
       name: 'aldfyeweuss',
-      email: 'bareef@bk.ru',
-      password: '1tertrfeww1',
+      email: 'bareerweref@bk.ru',
+      password: '1tweertrfeww1',
     };
     await serverRequest.post('/api/users', saveNewUser(user)).send(user);
 
@@ -36,7 +36,7 @@ describe('POST ', () => {
     expect(result.toObject()).toHaveProperty('email');
     expect(result.toObject()).toHaveProperty('password');
   });
-  it.skip('OK, creating a new Order works', async () => {
+  it('OK, creating a new Order works', async () => {
     const order = {
       orderItems: {
         name: 'Men Formal Dress 4',
